@@ -1,0 +1,11 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<div container>
+	{% set foo = 42 %}
+	{% set bar = 0 %}
+	{% if bar is defined and foo is defined %}
+		{{ bar + foo }}
+	{% endif %}
+</div>
+{% endblock %}

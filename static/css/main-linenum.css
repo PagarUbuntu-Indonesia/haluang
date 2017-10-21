@@ -1,0 +1,31 @@
+/* pygments highlighter - modified monokai.css ~ modified */
+/*----------------- syntax highlight -------------*/
+code, pre { border: none; color: ;}
+
+.codehilitetable { border: none; }
+.codehilitetable tr,
+.codehilitetable td { 
+	line-height: inherit;
+	padding: inherit;
+	border-right: none; }
+
+.linenos pre {}
+.code { width: 100%; }
+
+.linenos pre, .code pre { 
+	padding: 10px; 
+	margin-bottom: 0;
+}
+
+.codehilitetable .codehilite { margin: inherit; }
+.codehilitetable .codehilite pre { border-left: 1px solid #cd2828; }
+.codehilitetable .linenos pre { border-right: 1px solid #cd2828; }
+.codehilitetable pre, 
+.codehilitetable code { margin-bottom: 0; }
+
+.linenos pre, 
+.codehilite pre { 
+	color: #bdbdbd;
+	background-color: #272822;
+	margin-bottom: 0; }
+.codehilite { padding-bottom: 10px; }

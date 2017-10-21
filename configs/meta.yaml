@@ -1,0 +1,21 @@
+# Site configuration
+title: Haluang
+desc:  Website tutorial pemograman dasar. Dibuat dengan Flask, Jinja2 and python.
+
+# AKhiri tanda miring, perlu
+baseurl: "/"
+
+code:
+  title: Pemograman
+  desc: "Tutorial pemograman dasar."
+  icon: "fa-code"
+
+python:
+  title: Pemograman Lanjut Python
+  desc: "Implementasi Python (sederhana)."
+  icon: "fa-code"
+
+linux:
+  title: Linux
+  desc: "Tutorial dasar linux"
+  icon: "fa-linux"

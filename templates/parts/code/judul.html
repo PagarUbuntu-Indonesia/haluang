@@ -1,0 +1,9 @@
+<div class="judul">
+  <h1 container class="centerMe" style="text-align: right;">
+  {%- if page.icon -%}
+  	<i class="fa {{ page.icon }}"></i> {{ page.title -}}
+  {%- else -%}
+	{{- page.title -}}
+  {%- endif -%}
+  </h1>
+</div>

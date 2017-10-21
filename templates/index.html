@@ -1,0 +1,56 @@
+{% extends "_base.html" %}
+
+{# ######## TITLE ########## #}
+
+{% block title -%}
+	{% if page is defined -%}
+		{{- site.title }} &ndash; {{ page.title -}}
+	{%- else -%}
+		{{ site.title }}
+	{%- endif -%}
+{%- endblock -%}
+
+{%- block content %}
+<div class="judul">
+  <h1 container class="centerMe">
+  	<i class="fa {{ site.code.icon }}"></i> {{ site.code.title -}}
+  </h1>
+</div>
+
+<div container>
+<div row class="contentMe centerMe">
+{% for content in codes[:3] %}
+	<div column=3>
+		<h3 class="Raleway">{{ content.title }}</h3>
+		<p>
+		{% autoescape false -%}
+			{{ content.desc }}
+		{%- endautoescape %}
+		</p>
+		<a
+		{%- if content.release %} href="
+			{%- if 'code/' in content.url %}
+				{{ content.url -}}
+			{% else %}
+				{{- site.baseurl }}{{ content.url -}}
+			{% endif %}"
+		{%- endif %} class="button button--bordered 
+		{% if not content.release %} border--muted {% endif -%}
+		button--sm">
+		{%- if content.release -%}
+			Buka &raquo;
+		{%- else -%}
+			Segera &laquo;
+		{%- endif -%}
+		</a>
+	</div>
+{% endfor %}
+	<div column=3>
+		<h3 class="Raleway">Selengkapnya</h3>
+		<p>Daftar lengkap tutorial bahasa pemograman</p>
+		<a href="{{url_for('code')}}" class="button button--bordered button--sm">Buka &raquo;
+		</a>
+	</div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+# Syntax check: python -c 'yaml.load(open('PATH/TO.yaml').read())'
+- title: Dasar
+  contents:
+  - name: '0x00'
+    title: Pengantar
+  
+  - name: '0x01'
+    title: Tipe Data
+
+- title: Percabangan
+  contents:
+  - name: '0x02'
+    title: Ranting

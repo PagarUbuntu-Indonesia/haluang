@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+{% include "_meta.html" with context %}
+<body>
+{% include "_menu.html" %}
+{% block content %}
+{# --------- JUDUL --------- #}
+{% include 'parts/judul.html' with context %}
+<div container>
+{% if page is defined %}
+	{% autoescape false %}
+		{{ page.html|safe }}
+	{% endautoescape %}
+{% endif %}
+</div>
+{% endblock %}
+{% include "_footer.html" with context %}
+</body>
+</html>

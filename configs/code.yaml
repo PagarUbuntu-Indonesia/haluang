@@ -1,0 +1,23 @@
+-
+  title:  "C"
+  desc:   "Bahasa pemrograman ini dibuat pada tahun 1972 oleh Dennis Ritchie untuk Sistem Operasi Unix di Bell Telephone Laboratorie.<br/>(<em><a href='https://id.wikipedia.org/wiki/C_(bahasa_pemrograman)'>id.wikipedia</a></em>)"
+  url:    "code/c"
+  release: true
+
+-
+  title: "Bash"
+  desc:  "GNU Bourne-Again SHell"
+  url:   "#"
+  release: false
+
+-
+  title:  "Go"
+  desc:   "G o l a n g"
+  url:    "#"
+  release: false
+
+-
+  title: "Python"
+  desc:  "P y t h o n"
+  url:   "#"
+  release: false
