@@ -1,6 +1,6 @@
 ## Info
 
-> [versi online](https://haluang.surge.sh/)
+#### Online: [haluang.surge.sh](https://haluang.surge.sh/)
 
 Website seputar tutorial dasar bahasa pemograman.
 
