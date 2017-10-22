@@ -1,11 +1,25 @@
 <!DOCTYPE html>
 <html>
-{% include "_meta.html" with context %}
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <title>{% block title %}{{ site.title }}{% endblock %}</title>
+  <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='css/concise.min.css') }}">
+  <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='font-awesome/css/font-awesome.min.css') }}">
+  <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='css/monokai.css') }}">
+  <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='css/main.css') }}">
+  <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
 <body>
 {% include "_menu.html" %}
+
 {% block content %}
-{# --------- JUDUL --------- #}
+
 {% include 'parts/judul.html' with context %}
+
 <div container>
 {% if page is defined %}
 	{% autoescape false %}
@@ -14,6 +28,8 @@
 {% endif %}
 </div>
 {% endblock %}
+
 {% include "_footer.html" with context %}
+
 </body>
 </html>

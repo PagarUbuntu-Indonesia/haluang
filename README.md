@@ -1,6 +1,7 @@
 ## Info
 
-[versi online](https://jockerz.github.io)
+> [versi online](https://haluang.surge.sh/)
+
 Website seputar tutorial dasar bahasa pemograman.
 
 req:

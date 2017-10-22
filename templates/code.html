@@ -1,7 +1,7 @@
 {% extends "_base.html" %}
 {# --------- TITLE --------- #}
 {% block title %}
-	{%- if page is defined -%}
+	{%- if page.title is defined -%}
 		{{- site.title }} &ndash; {{ page.title -}}
 	{%- else -%}
 		{{ site.title }}
