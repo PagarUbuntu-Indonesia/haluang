@@ -13,9 +13,11 @@ req:
 ## Install
 
 ```
-$ virtualenv venv -p `which python3`
+$ git clone https://github.com/PagarUbuntu-Indonesia/haluang
+$ cd haluang
+$ virtualenv venv -p `which python3` venv
 $ source venv/bin/activate
-(venv)$ pip install Flask Flask-FlatPages Frozen-Flask pygments
+(venv)$ pip install -r requrements.txt
 ```
 
 ## Jalankan
