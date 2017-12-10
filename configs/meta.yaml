@@ -2,20 +2,29 @@
 title: Haluang
 desc:  Website tutorial pemograman dasar. Dibuat dengan Flask, Jinja2 and python.
 
-# AKhiri tanda miring, perlu
+# AKhiri tanda miring, penting
 baseurl: "/"
+
+bebas:
+  title: Bebas
+  desc: "Mungkin bukan tutorial."
+  icon: "fa-info-circle"
+  rilis: false
 
 code:
   title: Pemograman
   desc: "Tutorial pemograman dasar."
   icon: "fa-code"
+  rilis: true
 
 python:
   title: Pemograman Lanjut Python
   desc: "Implementasi Python (sederhana)."
   icon: "fa-code"
+  rilis: false
 
 linux:
   title: Linux
   desc: "Tutorial dasar linux"
   icon: "fa-linux"
+  rilis: false

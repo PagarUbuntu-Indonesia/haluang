@@ -1,37 +1,37 @@
-seksi:
+bab:
   dasar:
-    id: 1
+    nomor: 1
     judul: Pengantar
   jump_loop:  
-    id: 2
+    nomor: 2
     judul: Percabangan & Perulangan
   arr_str:  
-    id: 3
+    nomor: 3
     judul: Array & String
   fungsi:  
-    id: 4
+    nomor: 4
     judul: Fungsi
   ptr_ref:  
-    id: 5
+    nomor: 5
     judul: Pointer & Referensi
   file:  
-    id: 6
+    nomor: 6
     judul: Operasi File
   struct:  
-    id: 7
+    nomor: 7
     judul: Struct
   union:  
-    id: 8
+    nomor: 8
     judul: Union
   typedef:  
-    id: 9
+    nomor: 9
     judul: Typedef
   prepro:  
-    id: 10
+    nomor: 10
     judul: Preprosesor
   memori:  
-    id: 11
+    nomor: 11
     judul: Manajemen Memori
   penutup:  
-    id: 12
+    nomor: 12
     judul: Penutup

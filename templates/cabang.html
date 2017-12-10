@@ -1,0 +1,38 @@
+{% extends "_base.html" %}
+
+{# --------- TITLE --------- #}
+{% block title %}
+	{%- if konfigurasi_meta is defined and konfigurasi_meta.title is defined -%}
+		{{- site.title }} &ndash; {{ konfigurasi_meta.title -}}
+	{%- else -%}
+		{{ site.title }}
+	{%- endif %}
+{% endblock title %}
+
+{%- block content %}
+
+<div class="judul">
+  <h1 container class="centerMe" style="text-align: right;">
+  {%- if konfigurasi_tutorial is defined and konfigurasi_tutorial.icon is defined -%}
+  {% if page.icon is defined -%}
+    <i class="fa {{ page.icon }}"></i> {% endif -%}
+  	{{- konfigurasi_tutorial.title -}}
+  {%- else -%}
+	{{- page.title -}}
+  {%- endif -%}
+  </h1>
+</div>
+
+
+<div container>
+<div row class="contentMe">
+	<div column=3 style="padding: 20px 0;">
+		{%- include "parts/menu_cabang.html" with context %}
+	</div>
+	<div column=9 >
+		{{ page.html|safe }}
+	</div>
+</div>
+</div><!-- Akhir dari container -->
+
+{% endblock %}

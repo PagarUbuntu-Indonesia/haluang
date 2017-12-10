@@ -2,21 +2,15 @@
 
 #### Online: [haluang.surge.sh](https://haluang.surge.sh/)
 
-Website seputar tutorial dasar bahasa pemograman.
-
-req:
- - Flask (0.12.2)
- - Flask-FlatPages (0.6)
- - Frozen-Flask (0.15)
- - pygments
+Website seputar tutorial dasar bahasa pemograman, linux dan lain-lain.
 
 ## Install
 
 ```
 $ git clone https://github.com/PagarUbuntu-Indonesia/haluang
-$ cd haluang
 $ virtualenv venv -p `which python3` venv
 $ source venv/bin/activate
+$ cd haluang
 (venv)$ pip install -r requrements.txt
 ```
 
@@ -27,5 +21,5 @@ Buat file statis web: `(venv)$ python app.py build`
 
 ## Catatan
 
-> Haluang artinya kelelawar, gitu.
+> Haluang artinya kelelawar, begitu.
 

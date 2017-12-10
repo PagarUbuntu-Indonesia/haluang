@@ -1,0 +1,40 @@
+{% extends "_base.html" %}
+
+{# --------- TITLE --------- #}
+{% block title %}
+	{%- if konfigurasi_meta is defined and konfigurasi_meta.title is defined -%}
+		{{- site.title }} &ndash; {{ konfigurasi_meta.title -}}
+	{%- else -%}
+		{{ site.title }}
+	{%- endif %}
+{% endblock title %}
+
+{%- block content %}
+
+{% include 'parts/judul.html' with context %}
+
+<div container>
+<div row class="contentMe centerMe">
+
+{% for cabang in konfigurasi_tutorial if cabang.rilis %}	
+	<div column=3 id="cabang-tutorial-{{ cabang.title }}">
+		<h3 class="Raleway">{{ cabang.title }}</h3>
+		<p>
+			{% autoescape false %}{{ cabang.desc }}{% endautoescape %}
+		</p>
+		<a href="{{ url_for('cabang', tut=nama_tutorial, item=cabang.nama) }}" class="button button--bordered button--sm">Buka &raquo;</a>
+
+	{% if loop.index % 4 == 0 %}
+	</div>
+</div>
+</div><!-- Akhir dari container -->
+<div container>
+<div row class="contentMe centerMe">
+	{% else %}</div>
+	{% endif %}
+
+	{% endfor %}
+</div>
+</div><!-- Akhir dari container -->
+
+{% endblock %}

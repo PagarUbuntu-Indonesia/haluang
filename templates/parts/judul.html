@@ -1,7 +1,7 @@
 <div class="judul">
   <h1 container class="centerMe">
-  {%- if page.icon -%}
-  	<i class="fa {{ page.icon }}"></i> {{ page.title -}}
+  {%- if konfigurasi_meta is defined and konfigurasi_meta.icon is defined -%}
+  	<i class="fa {{ konfigurasi_meta.icon }}"></i> {{ konfigurasi_meta.title -}}
   {%- else -%}
 	{{- page.title -}}
   {%- endif -%}

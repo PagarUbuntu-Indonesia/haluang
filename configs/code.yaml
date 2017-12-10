@@ -1,23 +1,34 @@
 -
-  title:  "C"
-  desc:   "Bahasa pemrograman ini dibuat pada tahun 1972 oleh Dennis Ritchie untuk Sistem Operasi Unix di Bell Telephone Laboratorie.<br/>(<em><a href='https://id.wikipedia.org/wiki/C_(bahasa_pemrograman)'>id.wikipedia</a></em>)"
-  url:    "code/c"
-  release: true
+  title: "Bahasa C"
+  desc:  "Bahasa pemrograman ini dibuat pada tahun 1972 oleh Dennis Ritchie untuk Sistem Operasi Unix di Bell Telephone Laboratorie.<br/>(<em><a href='https://id.wikipedia.org/wiki/C_(bahasa_pemrograman)'>id.wikipedia</a></em>)"
+  nama:  c
+  url:   "code/c"
+  rilis: true
 
 -
-  title: "Bash"
+  title: "Bash Shell"
   desc:  "GNU Bourne-Again SHell"
+  nama:  bash
   url:   "#"
-  release: false
+  rilis: false
 
 -
-  title:  "Go"
-  desc:   "G o l a n g"
-  url:    "#"
-  release: false
+  title: "Go"
+  desc:  "G o l a n g"
+  nama:  go
+  url:   "#"
+  rilis: false
 
 -
   title: "Python"
   desc:  "P y t h o n"
+  nama:  python
   url:   "#"
-  release: false
+  rilis: false
+
+-
+  title: "Rust"
+  desc:  "R u s t - l a n g"
+  nama:  rust
+  url:   "#"
+  rilis: false

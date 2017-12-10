@@ -1,4 +1,7 @@
+.cache/
+__pycache__/
 build/
 kode/
-catatan
 venv/
+*.bak
+catatan

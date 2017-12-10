@@ -1,42 +1,28 @@
 #!/usr/bin/python
 import os, sys
-from glob import glob
-from flask import (
-	Flask, render_template, url_for, render_template_string)
+from flask import ( 
+	abort, 
+	Flask, 
+	render_template, 
+	url_for, 
+	render_template_string
+)
 from flask_flatpages import (
-	FlatPages, pygmented_markdown, pygments_style_defs)
+	FlatPages, 
+	pygmented_markdown, 
+	pygments_style_defs
+)
 from flask_frozen import Freezer
 import yaml
 from markdown import markdown
 
+CONFIG = 'configs'
+PAGE = 'pages'
+POST = 'posts'
+STATIC = 'static'
 TEMPLATE = 'templates'
-PAGE 	= 'pages'
-STATIC 	= 'static'
-POST 	= 'posts'
-CONFIG 	= 'configs'
 
-def renderer(text, **kwargs):
-	prerender = render_template(text, **kwargs)
-	return pygmented_markdown(prerender)
-
-def get_config(filename = 'meta.yaml'):
-	filename = os.path.join(CONFIG, filename)
-	return yaml.load(open(filename).read())
-
-def hexnumber():
-	st = ''
-	res = []
-	for x in range(256):
-		if x < 0x10:
-			st = '0{}'.format(str(hex(x))[-1])
-		else:
-			st = '{}'.format(hex(x))[2:]
-		res.append('{}{}'.format('0x', st.upper()))
-	return res
-	
-
-DEBUG = True
-FLATPAGES_AUTO_RELOAD = DEBUG
+FLATPAGES_AUTO_RELOAD = True
 FLATPAGES_EXTENSION = '.md'
 FLATPAGES_ROOT = '.'
 FLATPAGES_MARKDOWN_EXTENSIONS = [
@@ -50,177 +36,182 @@ FLATPAGES_MARKDOWN_EXTENSIONS = [
 	'smart_strong', # __strong__
 	'tables',		# Table
 ]
-#FLATPAGES_HTML_RENDERER = renderer
 
 app = Flask(__name__)
 pages = FlatPages(app)
 freezer = Freezer(app)
 app.config.from_object(__name__)
 
-
-def lang_menu(lang, konfigurasi):
+def hexnumber():
 	"""
-	return: bab, <daftar laman per bab>
-	
-	id dipakai untuk pengurutan bab di menu
-	dalam tiap bab, lampirkan <daftar laman per bab>
+	hasilkan angka hexadesimal 0 - 255
+	dengan format: 0x00 s/d 0xFF
 	"""
-	bab = {}
-	daftar_menu = {}
-	konfigurasi = konfigurasi['seksi']
-	for seksi in konfigurasi:
-		bab [konfigurasi[seksi]['id']] = seksi
-		daftar_menu[seksi] = []
+	st = ''
+	res = []
+	for x in range(256):
+		if x < 0x10:
+			st = '0{}'.format(str(hex(x))[-1])
+		else:
+			st = '{}'.format(hex(x))[2:]
+		res.append('{}{}'.format('0x', st.upper()))
+	return res
 
-	for p in pages:
-		if p.path.startswith('pages/code/{}'.format(lang)) \
-			and p.path != 'pages/code/{}'.format(lang):
-			if p.meta['seksi'] not in konfigurasi:
-				sys.stderr.write("[!] ERROR: seksi tidak ada di konfigurasi")
-				sys.stderr.write("\n    seksi: {}".format(p.meta['seksi']))
-				sys.stderr.write("\n    path : {}\n".format(p.path))
-				continue
+def get_config(filename = 'meta.yaml'):
+	filename = os.path.join(CONFIG, filename)
+	if not os.path.exists(filename):
+		return
+	return yaml.load(open(filename).read())
 
-			daftar_menu[p.meta['seksi']].append(p)
-
-	return bab, daftar_menu
-
+# override @app.route("/<tut>/<cab>/<item>")
+@app.route('/static/<path:dirname>/<path:filename>')
+def statis(dirname, filename):
+	statik_file = '{}/{}'.format(dirname, filename)
+	return app.send_static_file(statik_file)
 
 @app.route('/')
 def home():
+	"""
+	Tampilkan daftar tutorial
+	dengan maksimal 3 cabangnya
+	"""
 	template = 'index.html'
 	site_config = get_config()
-	return render_template(template, 
-		site = site_config, 
-		page = None,
-		codes = get_config(filename="code.yaml"))
 
-# CODE
-@app.route("/code/")
-def code():
-	template = "code.html"
-	site_config = get_config()
-	konten = get_config(filename="code.yaml")
-	return render_template(template, 
-		site 	= site_config, 
-		page 	= site_config['code'],
-		contents = konten )
-
-@app.route("/code/<lang>")
-@app.route("/code/<lang>/")
-def code_lang(lang):
-	"""
-	url: BASEURL / code / lang
-	cth: localhost:5000/code/c
-	"""
-	template = "prog_lang.html"
-	path = '{}/{}/{}'.format(PAGE, "code", lang)
-	site_config = get_config()
-	lang_config = get_config('code/{}.yaml'.format(lang))
-	page = pages.get_or_404(path)
-	bab, daftar = lang_menu(lang, lang_config)
-	return renderer(template, 
-		site = site_config, 
-		page = page,
-		config = lang_config,
-		bab = bab,
-		daftar_menu = daftar)
-
-@freezer.register_generator
-def code_lang_urls():
-	for lang in glob('pages/code/*.md'):
-		lang = lang.replace('pages/code','')
-		lang = lang.replace('.md',   '')
-		if lang[0] == "/": lang = lang[1:]
-		try:
-			lang_config = get_config('code/{}.yaml'.format(lang))
-			if not lang_config:
-				raise Exception
-		except:
+	tutorial = {}
+	for conf in site_config:
+		if conf in ["title", "desc", "baseurl"]:
 			continue
-		yield url_for('code_lang',lang=lang)
-
-	hexa = hexnumber()
-	for konten in glob('pages/code/*/*.md'):
-		konten = konten.replace('pages/code','')
-		konten = konten.replace('.md',   '')
-		if konten[0] == "/": konten = konten[1:]
-		lang, konten = konten.split("/")
-		try:
-			lang_config = get_config('code/{}.yaml'.format(lang))
-			if not lang_config:
-				raise Exception
-			if konten not in hexa:
-				raise Exception
-		except:
-			sys.stderr.write("[PERINGATAN]: {} tidak ditemukan".format(konten))
+		# konfigurasi cabang
+		tut_list = site_config[conf]
+		if not tut_list['rilis']:
 			continue
-		yield url_for('code_lang_content',lang=lang, hexnum=konten)
-
-@app.route("/code/<lang>/<hexnum>")
-@app.route("/code/<lang>/<hexnum>/")
-def code_lang_content(lang, hexnum):
-	"""
-	url: BASEURL / code / lang / hexnum 
-	cth: localhost:5000/code/c/0x00
-	"""
-	template 	= "prog_lang.html"
-	site_config = get_config()
-	path = '{}/{}/{}/{}'.format(PAGE, "code", lang, hexnum)
-	page = pages.get_or_404(path)
-	lang_config = get_config('code/{}.yaml'.format(lang))
-	current_lang_num = '/{}/{}/{}'.format("code", lang, hexnum)
-	bab, daftar = lang_menu(lang, lang_config)
-	return renderer(template, 
-		site = site_config, 
-		page = page,
-		config = lang_config,
-		bab = bab,
-		daftar_menu = daftar, 
-		laman_skrg = current_lang_num )
-
-
-@app.route('/jinja/')
-def jinja():
-	template = '_jinja.html'
-	site_config = get_config()
+		tutorial[conf] = tut_list
+		tutorial[conf]['konten'] = get_config("{}.yaml".format(conf))
+	
 	return render_template(template, 
-		site = site_config, 
-		page = None)
+		site=site_config, 
+		tutorial=tutorial)
 
-@app.route("/markdown/")
-def markdown():
-	template = "_base.html"
-	path = '{}/{}'.format(PAGE, "markdown")
-	page = pages.get(path)
-	site_config = get_config()
-	return render_template(template, 
-		site = site_config, 
-		page = page)
-
-@app.route("/tentang/")
+@app.route('/tentang/')
 def tentang():
 	template = "_base.html"
 	path = '{}/{}'.format(PAGE, "tentang")
-	page = pages.get(path)
-	site_config = get_config()
+	page = pages.get_or_404(path)
 	return render_template(template, 
-		site = site_config, 
-		page = page)
+		site = get_config(), 
+		page=page)
 
 @app.route("/404.html")
 def not_found():
 	template = "_base.html"
 	path = '{}/{}'.format(PAGE, "404")
-	page = pages.get(path)
+	page = pages.get_or_404(path)
 	site_config = get_config()
 	return render_template(template, 
 		site = site_config, 
 		page = page)
 
+@app.route("/<item>/")
+def tutorial(item):
+	template = "tutorial.html"
+	site_config = get_config()
+	konfigurasi_tutorial = get_config(
+		filename="{}.yaml".format(item))
+	if not konfigurasi_tutorial:
+		abort(404)
+	return render_template(template, 
+		site = site_config, 
+		konfigurasi_meta = site_config[item],
+		nama_tutorial = item,
+		konfigurasi_tutorial = konfigurasi_tutorial )
+
+#@app.route("/<tut>/<item>")
+@app.route("/<tut>/<item>/")
+def cabang(tut, item):
+	template = "cabang.html"
+	site_config = get_config()
+	konf_cabang = get_config(filename="{}/{}.yaml".format(tut, item))
+	
+	if not konf_cabang:
+		abort(404)
+	path = '{}/{}/{}'.format(PAGE, tut, item)
+	page = pages.get_or_404(path)
+	daftar_bab, daftar_item = daftar_menu_cabang(
+		site_config, konf_cabang, tut, item)
+	return render_template(template,
+		page = page,
+		site = site_config, 
+		konfigurasi_meta = site_config[tut],
+		konfigurasi_tutorial = konf_cabang,
+		daftar_bab = daftar_bab,
+		daftar_item = daftar_item,
+		nama_tutorial = tut,
+		nama_cabang = item,
+		nama_item = item,
+		#url_item = url_for('item_cabang', tut=tut, cab=item, item=item)
+	)
+
+#@app.route("/<tut>/<cab>/<item>")
+@app.route("/<tut>/<cab>/<item>/")
+def item_cabang(tut, cab, item):
+	template = "cabang.html"
+	site_config = get_config()
+	konf_cabang = get_config(filename="{}/{}.yaml".format(tut, cab))
+	
+	if not konf_cabang:
+		abort(404)
+	path = '{}/{}/{}/{}'.format(PAGE, tut, cab, item)
+	page = pages.get_or_404(path)
+	daftar_bab, daftar_item = daftar_menu_cabang(
+		site_config, konf_cabang, tut, cab)
+	return render_template(template, 
+		page = page,
+		site = site_config, 
+		konfigurasi_meta = site_config[tut],
+		konfigurasi_tutorial = konf_cabang,
+		daftar_bab = daftar_bab,
+		daftar_item = daftar_item,
+		nama_tutorial = tut,
+		nama_cabang = cab,
+		nama_item = item,
+		url_item = url_for('item_cabang', tut=tut, cab=cab, item=item)
+	 )
+
+def daftar_menu_cabang(konf_site, konf_cabang, tutorial, cabang):
+	"""
+	return (bab: [daftar item dari cabang]) # link ke hex
+	"""
+	konf_daftar_bab = konf_cabang['bab']
+	
+	daftar_bab = {}
+	daftar_item = {}
+	daftar_url = {}
+
+	# Supaya gampang diurutkan di kode html
+	for bab in konf_daftar_bab:
+		daftar_bab[konf_daftar_bab[bab]['nomor']] = bab
+		daftar_item[bab] = []
+
+	for laman in pages:
+		path = '{}/{}/{}'.format(PAGE, tutorial, cabang)
+		if not laman.path.startswith(path) \
+			or laman.path == path: # != <cabang>.md
+			continue
+		if 'bab' not in laman.meta:
+			continue
+		elif laman.meta['bab'] not in konf_daftar_bab:
+			sys.stderr.write("[!] PERINGATAN: bab tidak terdaftar\n")
+			sys.stderr.write("    bab : {}".format(laman.meta['bab']))
+			sys.stderr.write("    file: {}".format(laman.path))
+			continue
+
+		daftar_item[laman.meta['bab']].append(laman)
+
+	return daftar_bab, daftar_item
+
 if __name__ == "__main__":
 	if len(sys.argv) > 1 and sys.argv[1] == "build":
 		freezer.freeze()
-		#freezer.run(debug=True)
 	else:
 		app.run(host='0.0.0.0', debug=True)

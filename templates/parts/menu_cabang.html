@@ -1,0 +1,36 @@
+<div class="sidebar">
+<ul class="list--unstyled">
+
+{% for bab in daftar_bab | sort(reverse=false) %}
+	<li>
+		<h4 class="underlineMe">
+			{{ konfigurasi_tutorial['bab'][daftar_bab[bab]]['judul'] }}
+		</h4>
+
+		<ul class="list--unstyled">
+
+		{% for laman in daftar_item[daftar_bab[bab]] | sort(attribute='path') %}
+		<li>
+			{% set nama_item = laman.path.split('/')[-1] %}
+			{% set url = url_for('item_cabang', tut=nama_tutorial, cab=nama_cabang, item=nama_item) %}
+
+			<a href="{{ url }}"
+			{% if url_item is defined -%}
+				{%- if url == url_item -%} class="active-sidebar" {% endif -%}
+			{%- endif %}>
+			
+			{%- if laman.menu_title is defined -%}
+				{{- laman.menu_title|e -}}
+			{%- else -%}
+				{{- laman.title -}}
+			{%- endif -%}
+			</a>		
+		</li>
+		{% endfor %}
+		
+		</ul>	
+	</li>
+{% endfor %}
+
+</ul>
+</div>

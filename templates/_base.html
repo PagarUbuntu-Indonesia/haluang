@@ -6,7 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
-  <title>{% block title %}{{ site.title }}{% endblock %}</title>
+  <title>{% block title -%}
+    {%- if page is defined and page.title is defined -%}
+      {{ page.title }}
+    {% else %}
+      {{- site.title -}}
+    {% endif %}
+  {%- endblock %}</title>
   <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='css/concise.min.css') }}">
   <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='font-awesome/css/font-awesome.min.css') }}">
   <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='css/monokai.css') }}">
@@ -18,13 +24,20 @@
 
 {% block content %}
 
-{% include 'parts/judul.html' with context %}
+{%- if page is defined and page.title is defined -%}
+<div class="judul">
+  <h1 container class="centerMe">
+  {% if page.icon is defined -%}
+    <i class="fa {{ page.icon }}"></i> 
+  {%- endif -%}
+  {{ " " }}{{- page.title -}}  
+  </h1>
+</div>
+{%- endif -%}
 
 <div container>
 {% if page is defined %}
-	{% autoescape false %}
-		{{ page.html|safe }}
-	{% endautoescape %}
+	{% autoescape false %}{{ page.html|safe }}{% endautoescape %}
 {% endif %}
 </div>
 {% endblock %}
