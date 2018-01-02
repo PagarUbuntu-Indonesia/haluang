@@ -10,20 +10,20 @@ desc: "Semoga bisa dimengerti. :D"
 	- URL: `/`
 2. Tutorial
   	- File:  `configs / <tutorial>.yaml`
-  	- Berisi konfigurasi _per_ tutorial dan daftar __cabang__ tutorial.
+  	- Berisi konfigurasi tiap tutorial dan daftar __cabang__ tutorial.
  	- URL: `/ <tutorial> /`
- 	Untuk menambahkan jenis tutorial baru, harap hubungi siapa?
+ 	- Contoh: `configs / code.yml`
 3. Cabang Tutorial
  	- File: `configs / <tutorial> / <cabang>.yaml`
  	- Isi: konfigurasi _cabang tutorial_, daftar (berutut) _seksi_ menu.
  	- URL: `/ <tutorial> / <cabang> /`
- 	- Contoh pada tutorial _"code"_, salah satu cabang tutorial ini adalah _"c"_. URL-nya: `/ code / c /`
-4. Halaman 
-	- File: Tercantum di awal file laman
-	- Isi: Judul, judul di menu, dan `seksi`-nya.
+ 	- Contoh: `configs / code / c.yaml` . URL-nya: `/ code / c /`
 
 
 ## Konten
+
+Konten di website ini adalah konten yang ditampilkan tiap lamannya.
+Konten yang ditampilkan didapat dari file `markdown` kecuali untuk konten halaman beranda/_home_ dan daftar `tutorial`.
 
 Konten dari tutorial dan cabangnya adalah file markdown di direktori `pages`.
 
@@ -36,6 +36,9 @@ Konten dari tutorial dan cabangnya adalah file markdown di direktori `pages`.
 	- laman: `-`
 	- konten: 
 3. Cabang Tutorial
-	- URL: `/ <tutorial> / <cabang> /`. Contoh: `/code/c/`
-	- konten: `pages / <cabang>.md`
-	- isi konten: `pages / <cabang> / <0x00 s/d 0xFF>.md`
+	- URL: `/ <tutorial> / <cabang> /`.
+	- Laman: `/ pages / <tutorial> / <cabang>.md`
+4. Halaman Tutorial
+	- File: Tercantum di awal file laman
+	- Isi: `title` (Judul), `menu_title` (judul di menu), dan `bab`-nya.
+	- Konten: `pages / <cabang> / <0x00 s/d 0xFF>.md`

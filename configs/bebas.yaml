@@ -1,5 +1,6 @@
 -
   title: "Kontribusi"
-  desc:  "Intruksi Penulisan Tutorial"
+  desc:  "Intruksi Penulisan Tutorial dan Penggunaannya"
+  nama:  kontribusi
   url:   "bebas/kontribusi"
-  rilis: false
+  rilis: true

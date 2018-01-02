@@ -9,7 +9,7 @@ bebas:
   title: Bebas
   desc: "Mungkin bukan tutorial."
   icon: "fa-info-circle"
-  rilis: false
+  rilis: true
 
 code:
   title: Pemograman
