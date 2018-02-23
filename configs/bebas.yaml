@@ -4,3 +4,9 @@
   nama:  kontribusi
   url:   "bebas/kontribusi"
   rilis: true
+-
+  title: "SQLite"
+  desc:  "Tutorial SQLite Dasar oleh Syandal_ di freenode/ubuntu-indenesia"
+  nama:  sqlite
+  url:   "bebas/sqlite"
+  rilis: true

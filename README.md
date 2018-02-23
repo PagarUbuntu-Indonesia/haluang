@@ -7,7 +7,7 @@ Website seputar tutorial dasar bahasa pemograman, linux dan lain-lain.
 ## Install
 
 ```
-$ git clone https://github.com/PagarUbuntu-Indonesia/haluang
+$ git clone --depth 1 https://github.com/PagarUbuntu-Indonesia/haluang
 $ virtualenv venv -p `which python3` venv
 $ source venv/bin/activate
 $ cd haluang
