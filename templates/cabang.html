@@ -2,8 +2,8 @@
 
 {# --------- TITLE --------- #}
 {% block title %}
-	{%- if konfigurasi_meta is defined and konfigurasi_meta.title is defined -%}
-		{{- site.title }} &ndash; {{ konfigurasi_meta.title -}}
+	{%- if page is defined and page.title is defined -%}
+		{{- site.title }} &ndash; {{ page.title -}}
 	{%- else -%}
 		{{ site.title }}
 	{%- endif %}
