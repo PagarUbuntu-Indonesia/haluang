@@ -106,10 +106,20 @@ article { padding: 40px 0 5px 0; }
   border:0 #f9f9f9 solid;
   border-bottom-width:1px;
 }
+.sidebar h3, 
 .sidebar h4, 
 .sidebar ul > li > ul > li > a {
   padding-left:10px;
 }
+.sidebar h3,
+.sidebar h3 a { 
+	padding-top: 10px; 
+	color: #cd2828 !important;
+}
+.sidebar h3 a:hover,
+.sidebar h3 a:active, {
+	color: #cd2828 !important;
+} 
 .active-sidebar {
 	padding: 0 13px 0 3px;
 	color: #cd2828 !important;
@@ -129,7 +139,6 @@ article { padding: 40px 0 5px 0; }
 /*----------------- syntax highlight -------------*/
 code, pre { border: none;}
 
-.linenos pre {}
 .code { width: 100%; }
 
 .linenos pre, .code pre { 

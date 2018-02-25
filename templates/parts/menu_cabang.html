@@ -1,5 +1,8 @@
 <div class="sidebar">
 <ul class="list--unstyled">
+	<li><h3>
+		<a href="{{ url_for('cabang', tut=nama_tutorial, item=nama_cabang) }}">{{ nama_cabang | title }}</a>
+	</h3></li>
 
 {% for bab in daftar_bab | sort(reverse=false) %}
 	<li>
