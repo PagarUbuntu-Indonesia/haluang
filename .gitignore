@@ -6,3 +6,6 @@ venv/
 *.bak
 catatan
 note
+haluang.py
+test_haluang.py
+env.py

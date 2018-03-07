@@ -61,7 +61,8 @@ def get_config(filename = 'meta.yaml'):
 	filename = os.path.join(CONFIG, filename)
 	if not os.path.exists(filename):
 		return
-	return yaml.load(open(filename).read())
+	with open(filename) as fd:
+		return yaml.load(fd.read())
 
 # override @app.route("/<tut>/<cab>/<item>")
 @app.route('/static/<path:dirname>/<path:filename>')

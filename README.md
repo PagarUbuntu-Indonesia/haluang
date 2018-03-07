@@ -23,3 +23,9 @@ Buat file statis web: `(venv)$ python app.py build`
 
 > Haluang artinya kelelawar, begitu.
 
+## `haluang.py` dan `env.py`
+
+```bash
+(venv)$ python haluang.py
+
+```

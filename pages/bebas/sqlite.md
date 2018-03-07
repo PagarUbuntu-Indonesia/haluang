@@ -2,7 +2,14 @@ title: SQLite
 desc: "Ulasan Singkat SQLite"
 
 
-## Tentang
+## Info
+
+- Lokasi: #ubuntu-indonesia @ freenode.net
+- Silabus: [Silabus Belajar Bersama Sqlite Ubuntu indonesia](https://gist.github.com/taufiqur-rahman/f41af77c2cc81d226c158c800b7d221c)
+- Brosur: [Brosur belajar bersama SQLite3 # ubuntu-indonesia](https://www.dropbox.com/s/dbh55fbdx91gs7y/browsur.png?dl=0)
+- Pemateri: **Syandal_**
+
+## SQLite
 
 > Singkatnya dari [Wikipedia](https://id.wikipedia.org/wiki/SQLite), __SQLite__ adalah sistem manajemen database tertanam (_embedded_), sangat ringan, tidak terlalu banyak installasi aplikasi, tidak perlu konfigurasi dan tidak membutuhkan server.
 
@@ -45,13 +52,6 @@ Sqlite, dengan kesederhanaannya, juga sarat fitur seperti sistem manajemen datab
 - Tanya: kalo untuk json bagaimana, saya sih biasanya naro nya di file json, kalo dengan sqlite bagaimana, mana yang lebih efisien ? <br/>
   Jawab: Sepertinya, buat game bisa deh. Kemungkinan buat perangkat2 offline yang ga terkoneksi ke server. Ini [perbandingan kegunaan sqlite vs json](https://stackoverflow.com/questions/8652005/json-file-vs-sqlite-android) <br/>
   Ringkasan: Sqlite is mostly used when you want data to be saved and used in future. In your case data is changing every 5 minutes so its better to have JSON because every time to make the Database connection store and retrieve after 5 minutes will take some time.
-
-## Info
-
-- Lokasi: #ubuntu-indonesia @ freenode.net
-- Silabus: [Silabus Belajar Bersama Sqlite Ubuntu indonesia](https://gist.github.com/taufiqur-rahman/f41af77c2cc81d226c158c800b7d221c)
-- Brosur: [Brosur belajar bersama SQLite3 # ubuntu-indonesia](https://www.dropbox.com/s/dbh55fbdx91gs7y/browsur.png?dl=0)
-- Pemateri: **Syandal_**
 
 ## Referensi
 
