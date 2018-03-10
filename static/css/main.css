@@ -114,10 +114,10 @@ article { padding: 40px 0 5px 0; }
 .sidebar h3,
 .sidebar h3 a { 
 	padding-top: 10px; 
-	color: #cd2828 !important;
+	color: #4591aa !important;
 }
 .sidebar h3 a:hover,
-.sidebar h3 a:active, {
+.sidebar h3 a:active {
 	color: #cd2828 !important;
 } 
 .active-sidebar {
