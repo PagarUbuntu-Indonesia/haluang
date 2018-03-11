@@ -37,7 +37,7 @@
 	</div>
 	{% endfor %}
 
-	<div column=3 id="daftar-tutorial">
+	<div column=3 id="daftar-tutorial-{{ tut }}">
 		<h3 class="Raleway">Selengkapnya</h3>
 		<p>Daftar tutorial bahasa pemograman</p>
 		<a href="{{ url_for('tutorial', item=tut) }}" class="button button--bordered button--sm">Buka &raquo;
@@ -47,4 +47,42 @@
 </div>
 
 {% endfor %}
+
+<div class="judul" id="referensi-luar">
+  <h1 container class="centerMe">
+  	<i class="fa fa-code"></i> Referensi Lain
+  </h1>
+</div>
+
+<div container>
+<div row class="contentMe centerMe">
+	
+	{% for r in ref %}
+	<div column=3 id="ref-code-{{ r.nama }}">
+		<h3 class="Raleway">{{ r.nama }}</h3>
+		<p>
+			{% autoescape false %}
+			{{ r.desc }} <em>oleh</em> 
+			{% if r['link-penulis'] %}
+				<strong><a href="{{ r['link-penulis'] }}">{{ r.penulis }}</a></strong>
+			{% else %}
+				<strong>{{ r.penulis }}</strong>
+			{% endif %}
+			{% endautoescape %}
+		</p>	
+		<a href="{{ r.url }}" class="button button--bordered button--sm">Buka &raquo;</a>
+	</div>
+	{% endfor %}
+
+	<!--
+	<div column=3 id="ref-code">
+		<h3 class="Raleway">Selengkapnya</h3>
+		<p>Daftar tutorial bahasa pemograman bahasa Indonesia</p>
+		<a href="#" class="button button--bordered button--sm border--muted">Buka &laquo;
+		</a>
+	</div>
+	-->
+</div>
+</div>
+
 {% endblock %}

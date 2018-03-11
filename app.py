@@ -90,7 +90,9 @@ def home():
 		tutorial[conf] = tut_list
 		tutorial[conf]['konten'] = get_config("{}.yaml".format(conf))
 	
+	ref = get_config(filename='ref-code.yaml')
 	return render_template(template, 
+		ref=ref,
 		site=site_config, 
 		tutorial=tutorial)
 

@@ -113,10 +113,11 @@ def test_get_config():
 		for cabang in subdata:
 			assert cabang['title']
 			assert cabang['desc']
-			if cabang['rilis']:
-				assert tutor in cabang['url']
-			else:
-				assert cabang['url'] == "#"
+			if not cabang['rilis']:
+				continue
+			assert tutor in cabang['url']
+			assert cabang['url'] != "#"
+				
 
 def test_tentang(client, path_properti):
 	"""
@@ -182,10 +183,12 @@ def test_index(client):
 				# teks button: "Segera"
 				assert "Segera" in btn.text
 				# url: #
-				assert item['url'] == btn['href'].strip()
+				assert btn['href'].strip() == "#"
 		
 		# Selengkapnya
-		div = soup.find("div", attrs={'id': 'daftar-tutorial'})
+		nama_id = 'daftar-tutorial-' + conf
+		print(nama_id)
+		div = soup.find("div", attrs={'id': nama_id})
 		tutorial_link = div.find("a")
 		assert tutorial_link['href'].strip() == "/{}/".format(conf)
 
