@@ -9,6 +9,9 @@ desc: "Ulasan Singkat SQLite"
 - Brosur: [Brosur belajar bersama SQLite3 # ubuntu-indonesia](https://www.dropbox.com/s/dbh55fbdx91gs7y/browsur.png?dl=0)
 - Pemateri: **Syandal_**
 
+> [_IRC_ #Ubuntu Indonesia _di_ Freenode](https://pagarubuntu-indonesia.github.io)
+
+
 ## SQLite
 
 > Singkatnya dari [Wikipedia](https://id.wikipedia.org/wiki/SQLite), __SQLite__ adalah sistem manajemen database tertanam (_embedded_), sangat ringan, tidak terlalu banyak installasi aplikasi, tidak perlu konfigurasi dan tidak membutuhkan server.
@@ -20,7 +23,7 @@ Sqlite, dengan kesederhanaannya, juga sarat fitur seperti sistem manajemen datab
 
 - Ukuran paket Sqlite sangat kecil yang ukurannya kurang dari 500kb tidak seperti database lain.
 - Sqlite bukan bertipe __client - server__, dia berupa pustaka memory yang bisa kita panggil langsung untuk menggunakannya
-- Umumnya database sqlite disimpan pada file tunggal didalam harddrive komputer. semua obyek (table, view, triger, dll) sudah termasuk kedalam file tersebut.
+- Umumnya database sqlite disimpan pada file tunggal didalam harddrive komputer. semua obyek (`table`, `view`, `trigger`, dll) sudah termasuk kedalam file tersebut.
 
 ## Penggunaan
 
