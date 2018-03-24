@@ -8,8 +8,12 @@ desc: "Ulasan Singkat SQLite"
 - Silabus: [Silabus Belajar Bersama Sqlite Ubuntu indonesia](https://gist.github.com/taufiqur-rahman/f41af77c2cc81d226c158c800b7d221c)
 - Brosur: [Brosur belajar bersama SQLite3 # ubuntu-indonesia](https://www.dropbox.com/s/dbh55fbdx91gs7y/browsur.png?dl=0)
 - Pemateri: **Syandal_**
+- [_File Sharing_ Komunitas](http://sf1.hashbang.sh:8228), username dan sandi: `ubuntuid`
+
 
 > [_IRC_ #Ubuntu Indonesia _di_ Freenode](https://pagarubuntu-indonesia.github.io)
+
+> [pagarubuntu-indonesia.github.io](https://pagarubuntu-indonesia.github.io)
 
 
 ## SQLite
@@ -61,3 +65,4 @@ Sqlite, dengan kesederhanaannya, juga sarat fitur seperti sistem manajemen datab
 1. [sqlitetutorial.net](http://www.sqlitetutorial.net/)
 2. [tutorialspoint.com/sqlite](https://www.tutorialspoint.com/sqlite/)
 3. [guru99.com/sqlite-tutorial](http://www.guru99.com/sqlite-tutorial.html)
+4. [Zetcode/db/sqlite](http://zetcode.com/db/sqlite)

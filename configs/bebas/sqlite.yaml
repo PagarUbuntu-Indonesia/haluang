@@ -1,13 +1,16 @@
 bab:
   pertama:
     nomor: 1
-    judul: Pertemuan Pertama
+    judul: Pertemuan 1
   kedua:
     nomor: 2
-    judul: Pertemuan Kedua
+    judul: Pertemuan 2
   ketiga:
     nomor: 3
-    judul: Pertemuan Ketiga
+    judul: Pertemuan 3
   keempat:
     nomor: 4
-    judul: Pertemuan Keempat
+    judul: Pertemuan 4
+  kelima:
+    nomor: 5
+    judul: Pertemuan 5
