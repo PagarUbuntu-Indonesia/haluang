@@ -1,4 +1,11 @@
 -
+  title: "Assembly x86"
+  desc:  "Bahasa Assembly untuk prosesor x86 (Linux)"
+  nama:  asm
+  url:   "code/asm"
+  rilis: false
+
+-
   title: "C"
   desc:  "Bahasa pemrograman ini dibuat pada tahun 1972 oleh Dennis Ritchie untuk Sistem Operasi Unix di Bell Telephone Laboratorie.<br/>(<em><a href='https://id.wikipedia.org/wiki/C_(bahasa_pemrograman)'>id.wikipedia</a></em>)"
   nama:  c
