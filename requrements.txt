@@ -9,3 +9,7 @@ MarkupSafe
 Pygments
 PyYAML
 Werkzeug
+
+# Test
+beautifulsoup4
+pytest

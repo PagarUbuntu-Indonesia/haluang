@@ -32,15 +32,16 @@ FLATPAGES_MARKDOWN_EXTENSIONS = [
 					#     Malus in the family Rosaceae.
 	'codehilite', 	# syntax highlight 
 	'fenced_code', 	# github style syntax highlighting
-	'smarty',		
-	'smart_strong', # __strong__
+	'smarty',
 	'tables',		# Table
 ]
+
 
 app = Flask(__name__)
 pages = FlatPages(app)
 freezer = Freezer(app)
 app.config.from_object(__name__)
+
 
 def hexnumber():
 	"""
@@ -57,6 +58,7 @@ def hexnumber():
 		res.append('{}{}'.format('0x', st.upper()))
 	return res
 
+
 def get_config(filename = 'meta.yaml'):
 	filename = os.path.join(CONFIG, filename)
 	if not os.path.exists(filename):
@@ -64,11 +66,13 @@ def get_config(filename = 'meta.yaml'):
 	with open(filename) as fd:
 		return yaml.load(fd.read())
 
+
 # override @app.route("/<tut>/<cab>/<item>")
 @app.route('/static/<path:dirname>/<path:filename>')
 def statis(dirname, filename):
 	statik_file = '{}/{}'.format(dirname, filename)
 	return app.send_static_file(statik_file)
+
 
 @app.route('/')
 def home():
@@ -96,6 +100,7 @@ def home():
 		site=site_config, 
 		tutorial=tutorial)
 
+
 @app.route('/tentang/')
 def tentang():
 	template = "_base.html"
@@ -104,6 +109,7 @@ def tentang():
 	return render_template(template, 
 		site = get_config(), 
 		page=page)
+
 
 @app.route("/404.html")
 def not_found():
@@ -114,6 +120,7 @@ def not_found():
 	return render_template(template, 
 		site = site_config, 
 		page = page)
+
 
 @app.route("/<item>/")
 def tutorial(item):
@@ -128,6 +135,7 @@ def tutorial(item):
 		konfigurasi_meta = site_config[item],
 		nama_tutorial = item,
 		konfigurasi_tutorial = konfigurasi_tutorial )
+
 
 #@app.route("/<tut>/<item>")
 @app.route("/<tut>/<item>/")
@@ -155,6 +163,7 @@ def cabang(tut, item):
 		#url_item = url_for('item_cabang', tut=tut, cab=item, item=item)
 	)
 
+
 #@app.route("/<tut>/<cab>/<item>")
 @app.route("/<tut>/<cab>/<item>/")
 def item_cabang(tut, cab, item):
@@ -180,6 +189,7 @@ def item_cabang(tut, cab, item):
 		nama_item = item,
 		url_item = url_for('item_cabang', tut=tut, cab=cab, item=item)
 	 )
+
 
 def daftar_menu_cabang(konf_site, konf_cabang, tutorial, cabang):
 	"""
@@ -212,6 +222,7 @@ def daftar_menu_cabang(konf_site, konf_cabang, tutorial, cabang):
 		daftar_item[laman.meta['bab']].append(laman)
 
 	return daftar_bab, daftar_item
+
 
 if __name__ == "__main__":
 	if len(sys.argv) > 1 and sys.argv[1] == "build":

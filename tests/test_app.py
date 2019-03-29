@@ -12,7 +12,23 @@ from app import (
 	app,
 	hexnumber, 
 	get_config,
+	CONFIG, 
+	PAGE, 
+	POST, 
+    TEMPLATE
 )
+
+
+def path_properti():
+    """
+    Variabel direktori website
+    """
+    return {
+        'config': CONFIG,
+        'page': PAGE,
+        'post': POST,
+        'template': TEMPLATE
+    }
 
 
 def config_file(*args):
@@ -24,6 +40,7 @@ def config_file(*args):
 	c_path = os.path.normpath(c_path)
 	return os.path.join(page_path, c_path)
 
+
 def page_file(*args):
 	"""
 	path ke konten (markdown)
@@ -32,6 +49,7 @@ def page_file(*args):
 	a_path = "/".join([a for a in args if a is not None])
 	a_path = os.path.normpath(a_path)
 	return os.path.join(page_path, a_path)
+
 
 def config_dari_konten(konten):
 	config = {}
@@ -43,7 +61,8 @@ def config_dari_konten(konten):
 			break
 		config.update(yaml.load(baris))
 	return config
-	
+
+
 def periksa_judul(req_data, konten):
 	"""
 	Periksa judul untuk konten yang pakai template `_base`
@@ -53,6 +72,7 @@ def periksa_judul(req_data, konten):
 	config_halaman = config_dari_konten(konten)
 	return judul.text.strip() == str(config_halaman['title'])
 
+
 def daftar_tutorial():
 	site_config = get_config()
 	for conf in site_config:
@@ -61,21 +81,6 @@ def daftar_tutorial():
 		else:
 			yield conf
 
-@pytest.fixture
-def path_properti():
-	"""
-	Variabel direktori website
-	"""
-	import app
-	return { 'config': getattr(app, 'CONFIG'),
-		'page': getattr(app, 'PAGE'),
-		'post': getattr(app, 'POST'),
-		'template': getattr(app, 'TEMPLATE'),}
-
-@pytest.fixture
-def client():
-	client = app.test_client()
-	yield client
 
 def test_hexnumber():
 	"""
@@ -85,6 +90,7 @@ def test_hexnumber():
 	assert len(data) == len(range(0,256))
 	for angka in data:
 		assert int(angka, base=16) < 256 and int(angka, base=16) >= 0
+
 
 def test_get_config():
 	"""
@@ -117,7 +123,7 @@ def test_get_config():
 				continue
 			assert tutor in cabang['url']
 			assert cabang['url'] != "#"
-				
+
 
 def test_tentang(client, path_properti):
 	"""
@@ -130,6 +136,7 @@ def test_tentang(client, path_properti):
 	req = client.get('/tentang/')
 	assert periksa_judul(req.data, konten)	
 
+
 def test_404(client, path_properti):
 	"""
 	Tes toute "/404.html"
@@ -139,6 +146,7 @@ def test_404(client, path_properti):
 	# ada konten/file
 	assert os.path.exists(konten)
 	req = client.get('/404.html')
+
 
 def test_index(client):
 	"""
@@ -192,6 +200,7 @@ def test_index(client):
 		tutorial_link = div.find("a")
 		assert tutorial_link['href'].strip() == "/{}/".format(conf)
 
+
 def test_tutorial(client, path_properti):
 	"""
 	Test rilis tutorial
@@ -243,6 +252,7 @@ def test_tutorial(client, path_properti):
 					in P.text
 		# Akhir for cabang
 	# Akhir for daftar
+
 
 def test_cabang_dan_itemnya(client, path_properti):
 	"""
