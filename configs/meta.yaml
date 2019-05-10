@@ -21,7 +21,7 @@ python:
   title: Pemograman Lanjut Python
   desc: "Implementasi Python (sederhana)."
   icon: "fa-code"
-  rilis: false
+  rilis: true
 
 linux:
   title: Linux
