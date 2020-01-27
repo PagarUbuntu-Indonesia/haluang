@@ -278,7 +278,7 @@ def test_cabang_dan_itemnya(client, path_properti):
 				continue
 			c_config = get_config("{}/{}.yaml".format(
 				per_cabang, conf['nama']))
-			assert c_config != None
+			assert c_config != None, f'c_config != None; per_cabang={per_cabang} conf={conf["nama"]}'
 
 			# Isi cabang 0x00 - 0xFF
 			for h in hexnumber():

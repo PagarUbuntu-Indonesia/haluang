@@ -19,12 +19,12 @@
   url:   "#"
   rilis: false
 
--
-  title: "Python"
-  desc:  "P y t h o n"
-  nama:  python
-  url:   "#"
-  rilis: false
+#-
+#  title: "Python"
+#  desc:  "P y t h o n"
+#  nama:  python
+#  url:   "#"
+#  rilis: true
 
 -
   title: "Rust"

@@ -2,15 +2,15 @@ bab:
   dasar:
     nomor: 1
     judul: Pengantar
-  jump_loop:  
+  env_conf:
     nomor: 2
-    judul: Percabangan & Perulangan
-  arr_str:  
+    judul: Environment dan Konfigurasi
+  singkat:
     nomor: 3
-    judul: Array & String
-  fungsi:  
+    judul: Pemakainan Singkat
+  rute:
     nomor: 4
-    judul: Fungsi
+    judul: Rute
   ptr_ref:  
     nomor: 5
     judul: Pointer & Referensi

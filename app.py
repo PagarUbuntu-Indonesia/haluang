@@ -1,15 +1,15 @@
 #!/usr/bin/python
 import os, sys
-from flask import ( 
-	abort, 
-	Flask, 
-	render_template, 
-	url_for, 
+from flask import (
+	abort,
+	Flask,
+	render_template,
+	url_for,
 	render_template_string
 )
 from flask_flatpages import (
-	FlatPages, 
-	pygmented_markdown, 
+	FlatPages,
+	pygmented_markdown,
 	pygments_style_defs
 )
 from flask_frozen import Freezer

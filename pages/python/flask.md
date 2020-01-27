@@ -10,11 +10,12 @@ Flask merupakan _microframework_ yang ditulis dengan bahasa pemograman Pyhton.
 
  - [Jinja2]()
  - [Werkzeug]()
+ - [Flask-HTTPAuth]()
+ - [Itsdangerous]()
 
 
 ### <i class="fa fa-list"></i> Referensi {:.titleMe }
 
-- [Python](https://www.python.org/)
 - [_Dokumentasi Flask_](http://flask.pocoo.org/)
 - [Tutorial Flask](http://flask.pocoo.org/docs/0.12/tutorial/)
 - [The Flask Mega-Tutorial Part I: Hello, World!](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) Tutorial yang lingkup luas seputar aplikasi web, __Flask__ dan Perlengkapannya.

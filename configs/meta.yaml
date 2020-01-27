@@ -17,11 +17,11 @@ code:
   icon: "fa-code"
   rilis: true
 
-python:
-  title: Pemograman Lanjut Python
-  desc: "Implementasi Python (sederhana)."
-  icon: "fa-code"
-  rilis: true
+# python:
+#  title: Pemograman Lanjut Python
+#  desc: "Implementasi Python (sederhana)."
+#  icon: "fa-code"
+#  rilis: true
 
 linux:
   title: Linux
