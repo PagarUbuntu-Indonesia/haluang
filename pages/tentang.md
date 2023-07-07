@@ -1,5 +1,8 @@
 title: Tentang
 
+---
+
+
 > Haluang artinya kalelawar, begitu.
 
 Website ini berisi tutorial bahasa pemograman dasar dan Linux.

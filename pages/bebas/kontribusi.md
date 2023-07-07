@@ -1,6 +1,8 @@
 title: Struktur
 desc: "Semoga bisa dimengerti. :D"
 
+---
+
 
 ## Konfigurasi
 

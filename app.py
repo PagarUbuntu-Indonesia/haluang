@@ -64,7 +64,7 @@ def get_config(filename = 'meta.yaml'):
 	if not os.path.exists(filename):
 		return
 	with open(filename) as fd:
-		return yaml.load(fd.read())
+		return yaml.load(fd.read(), Loader=yaml.Loader)
 
 
 # override @app.route("/<tut>/<cab>/<item>")
@@ -199,7 +199,6 @@ def daftar_menu_cabang(konf_site, konf_cabang, tutorial, cabang):
 	
 	daftar_bab = {}
 	daftar_item = {}
-	daftar_url = {}
 
 	# Supaya gampang diurutkan di kode html
 	for bab in konf_daftar_bab:
@@ -213,7 +212,7 @@ def daftar_menu_cabang(konf_site, konf_cabang, tutorial, cabang):
 			continue
 		if 'bab' not in laman.meta:
 			continue
-		elif laman.meta['bab'] not in konf_daftar_bab:
+		elif laman.meta.get('bab') not in konf_daftar_bab:
 			sys.stderr.write("[!] PERINGATAN: bab tidak terdaftar\n")
 			sys.stderr.write("    bab : {}".format(laman.meta['bab']))
 			sys.stderr.write("    file: {}".format(laman.path))

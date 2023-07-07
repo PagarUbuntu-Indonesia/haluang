@@ -1,5 +1,8 @@
 title: Pengantar Pemograman Bahasa Assembly pada Mikroprosesor x86 Linux
 
+---
+
+
 ### <i class="fa fa-info-circle"></i> Pengantar {:.titleMe }
 
 Bahasa Assembly merupakan bahasa pemograman tingkat rendah pada komputer.

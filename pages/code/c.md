@@ -1,5 +1,7 @@
 title: Pengantar Pemograman Bahasa C
 
+---
+
 
 #### Alat dan Bahan <small>~ Pengguna GNU/Linux Debian dan Keluarga</small>
 ---

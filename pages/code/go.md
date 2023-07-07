@@ -1,5 +1,7 @@
 title: Golang
 
+---
+
 
 ### <i class="fa fa-code"></i> Tentang Golang {:.titleMe }
 

@@ -2,6 +2,8 @@ title: Catatan Akhir
 menu_title: Catatan Akhir
 bab: penutup
 
+---
+
 
 ### <i class="fa fa-list"></i> Daftar Pustaka {:.titleMe }
 

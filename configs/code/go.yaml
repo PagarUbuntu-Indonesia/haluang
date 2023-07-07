@@ -1,40 +1,40 @@
 bab:
   draft:
     nomor: 0
-    judul: Draft
+    judul: "Draft"
   dasar:
     nomor: 1
-    judul: Pengantar
+    judul: "Pengantar"
   jump_loop:  
     nomor: 2
-    judul: Percabangan & Perulangan
+    judul: "Percabangan & Perulangan"
   arr_str:  
     nomor: 3
-    judul: Array & String
+    judul: "Array & String"
   fungsi:  
     nomor: 4
-    judul: Fungsi
+    judul: "Fungsi"
   ptr_ref:  
     nomor: 5
-    judul: Pointer & Referensi
+    judul: "Pointer & Referensi"
   file:  
     nomor: 6
-    judul: Operasi File
+    judul: "Operasi File"
   struct:  
     nomor: 7
-    judul: Struct
+    judul: "Struct"
   union:  
     nomor: 8
-    judul: Union
+    judul: "Union"
   typedef:  
     nomor: 9
-    judul: Typedef
+    judul: "Typedef"
   prepro:  
     nomor: 10
-    judul: Preprosesor
+    judul: "Preprosesor"
   memori:  
     nomor: 11
-    judul: Manajemen Memori
+    judul: "Manajemen Memori"
   penutup:  
     nomor: 12
-    judul: Penutup
+    judul: "Penutup"
